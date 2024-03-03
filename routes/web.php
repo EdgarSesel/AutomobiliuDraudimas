@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CarInfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,5 @@ Route::get('/car', [CarController::class, 'index'])->name('car.index');
 Route::get('/car/edit/{id}', [CarController::class, 'edit'])->name('car.edit');
 Route::post('/car/save/{id}', [CarController::class, 'save'])->name('car.save');
 Route::get('/car/delete/{id}', [CarController::class, 'delete'])->name('car.delete');
+
+Route::resource('carInfo', CarInfoController::class);

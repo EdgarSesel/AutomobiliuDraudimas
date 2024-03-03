@@ -6,6 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{route('car.create') }}" class="btn btn-info">Pridėti naują automobilio sąvyninką</a>
+                        <hr>
                         <table class="table">
                             <thead>
                             <tr>

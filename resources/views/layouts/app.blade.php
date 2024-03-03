@@ -31,7 +31,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('car.create') }}">Pridėti naują automobilio savininką</a>
+                        <a class="nav-link" href="{{ route('carInfo.index') }}">Peržiurėti automobilius</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('car.index') }}">Peržiurėti automobilio savininkus</a>
