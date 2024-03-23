@@ -7,6 +7,11 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:editor', ['only' => ['save', 'delete']]);
+    }
     public function create()
     {
         return view('car.create');
@@ -49,9 +54,19 @@ class CarController extends Controller
         return redirect()->route('car.index');
     }
 
-    public function delete($id){
-        $car=Car::find($id);
+    public function delete($id)
+    {
+        $car = Car::find($id);
+
+        // Check if there are related car_infos records
+        if ($car->carInfo()->exists()) {
+            // Redirect back with a warning message
+            return redirect()->back()->with('warning', 'Please delete all cars related to car owner in order to delete data');
+        }
+
+        // If there are no related car_infos records, delete the car record
         $car->delete();
+
         return redirect()->route('car.index');
     }
     }

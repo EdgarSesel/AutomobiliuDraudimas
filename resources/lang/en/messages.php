@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'welcome' => 'Welcome to our website!',
+    'add_new_car_info' => 'Add new car information',
+    'car_name' => 'Car Name',
+    'car_model' => 'Car Model',
+    'car_year' => 'Car Year',
+    'add_car' => 'Add Car',
+    'car_list' => 'Car List',
+    'car_info' => 'Car Information',
+    'owner_list' => 'Owner List',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'update_car_info' => 'Update Car Information',
+    'update' => 'Update',
+    'cancel' => 'Cancel',
+    'car_deleted' => 'Car deleted successfully!',
+    'car_updated' => 'Car updated successfully!',
+    'car_added' => 'Car added successfully!',
+    'brand' => 'Brand',
+    'name' => 'Name',
+    'surname' => 'Surname',
+    'phone' => 'Phone',
+    'email' => 'Email',
+    'registration_number' => 'Registration Number',
+    'new_owner' => 'Add New Car Owner',
+    'owner_id' => 'Owner ID',
+    'add' => 'Add',
+
+];

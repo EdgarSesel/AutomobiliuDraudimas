@@ -6,15 +6,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{route('car.create') }}" class="btn btn-info">Pridėti naują automobilio sąvyninką</a>
-                        <hr>
+                        @if (Auth::check() && Auth::user()->role === 'editor')
+                        <a href="{{route('car.create') }}" class="btn btn-info">@lang('messages.new_owner')</a>
+                        @endif
+                            <hr>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Vardas</th>
-                                <th>Pavardė</th>
-                                <th>Telefonas</th>
-                                <th>El. paštas</th>
+                                <th>@lang('messages.name')</th>
+                                <th>@lang('messages.surname')</th>
+                                <th>@lang('messages.phone')</th>
+                                <th>@lang('messages.email')</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -26,8 +28,10 @@
                                     <td>{{ $car->phone }}</td>
                                     <td>{{ $car->email}}</td>
                                     <td>
-                                        <a class="btn btn-info" href="{{ route('car.edit', $car->id) }}">Redaguoti</a>
-                                        <a class="btn btn-danger" href="{{ route('car.delete', $car->id) }}">Ištrinti</a>
+                                        @if (Auth::check() && Auth::user()->role === 'editor')
+                                            <button class="btn btn-primary">@lang('messages.edit')</button>
+                                            <button class="btn btn-danger">@lang('messages.delete')</button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -31,10 +31,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('carInfo.index') }}">Peržiurėti automobilius</a>
+                        <a class="nav-link" href="{{ route('carInfo.index') }}">@lang('messages.car_list')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('car.index') }}">Peržiurėti automobilio savininkus</a>
+                        <a class="nav-link" href="{{ route('car.index') }}">@lang('messages.owner_list')</a>
                     </li>
                 </ul>
 
@@ -71,12 +71,26 @@
                                 </form>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownLang" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ strtoupper(app()->getLocale()) }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLang">
+                                <a class="dropdown-item" href="{{ url()->current() . '?lang=en' }}">EN</a>
+                                <a class="dropdown-item" href="{{ url()->current() . '?lang=lt' }}">LT</a>
+                            </div>
+                        </li>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
-
+    @if (session('warning'))
+        <script>
+            alert('{{ session('warning') }}');
+        </script>
+    @endif
     <main class="py-4">
         @yield('content')
     </main>

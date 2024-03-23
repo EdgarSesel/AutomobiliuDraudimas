@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'welcome' => 'Sveiki atvykę į mūsų svetainę!',
+    'add_new_car_info' => 'Prideti nauja automobilio informacija',
+    'car_name' => 'Automobilio pavadinimas',
+    'car_model' => 'Automobilio modelis',
+    'car_year' => 'Automobilio metai',
+    'add_car' => 'Pridėti automobilį',
+    'car_list' => 'Automobilių sąrašas',
+    'owner_list' => 'Savininkų sąrašas',
+    'car_info' => 'Automobilio informacija',
+    'edit' => 'Redaguoti',
+    'delete' => 'Ištrinti',
+    'update_car_info' => 'Atnaujinti automobilio informaciją',
+    'update' => 'Atnaujinti',
+    'cancel' => 'Atšaukti',
+    'car_deleted' => 'Automobilis sėkmingai ištrintas!',
+    'car_updated' => 'Automobilis sėkmingai atnaujintas!',
+    'car_added' => 'Automobilis sėkmingai pridėtas!',
+    'brand' => 'Markė',
+    'name' => 'Vardas',
+    'surname' => 'Pavardė',
+    'phone' => 'Telefonas',
+    'email' => 'El. paštas',
+    'registration_number' => 'Registracijos numeris',
+    'new_owner' => 'Pridėti naują automobilio savininką',
+    'owner_id' => 'Savininko ID',
+    'add' => 'Pridėti',
+
+];
