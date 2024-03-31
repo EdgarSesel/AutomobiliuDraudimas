@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarRequest;
 use App\Models\CarInfo;
 use Illuminate\Http\Request;
 
@@ -28,16 +29,11 @@ class CarInfoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-        $data = $request->validate([
-            'reg_number' => 'required|string',
-            'brand' => 'required|string',
-            'model' => 'required|string',
-            'owner_id' => 'required|integer|exists:cars,id',
-        ]);
+        $validated = $request->validated();
 
-        CarInfo::create($data);
+        CarInfo::create($validated);
 
         return redirect()->route('carInfo.index');
     }
@@ -61,16 +57,14 @@ class CarInfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CarInfo $carInfo)
+    public function update(CarRequest $request, CarInfo $carInfo)
     {
-        $data = $request->validate([
-            'reg_number' => 'required|string',
-            'brand' => 'required|string',
-            'model' => 'required|string',
-            'owner_id' => 'required|integer|exists:cars,id',
-        ]);
+        // The incoming request is valid...
 
-        $carInfo->update($data);
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+
+        $carInfo->update($validated);
 
         return redirect()->route('carInfo.index');
     }

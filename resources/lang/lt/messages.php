@@ -27,5 +27,12 @@ return [
     'new_owner' => 'Pridėti naują automobilio savininką',
     'owner_id' => 'Savininko ID',
     'add' => 'Pridėti',
+    'reg_number' => 'Valstybinis numeris yra privalomas.',
+    'reg_number.regex' => 'Valstybinis numeris turi atitikti formatą: AAA-999.',
+    'brand.required' => 'Automobilio markė yra privaloma.',
+    'model.required' => 'Automobilio modelis yra privalomas.',
+    'owner_id.required' => 'Automobilio savininkas yra privalomas.',
+    'owner_id.exists' => 'Pasirinktas automobilio savininkas neegzistuoja.',
+
 
 ];

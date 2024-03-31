@@ -27,5 +27,12 @@ return [
     'new_owner' => 'Add New Car Owner',
     'owner_id' => 'Owner ID',
     'add' => 'Add',
+    'reg_number' => 'Registration number is required.',
+    'reg_number.regex' => 'Registration number must match the format: AAA-999.',
+    'brand.required' => 'Car brand is required.',
+    'model.required' => 'Car model is required.',
+    'owner_id.required' => 'Car owner is required.',
+    'owner_id.exists' => 'Selected car owner does not exist.',
+
 
 ];
