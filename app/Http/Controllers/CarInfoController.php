@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CarRequest;
 use App\Models\CarInfo;
 use Illuminate\Http\Request;
+use App\Models\CarImage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
 
 class CarInfoController extends Controller
 {
@@ -14,6 +18,9 @@ class CarInfoController extends Controller
     public function index()
     {
         $carInfos = CarInfo::all();
+
+
+
 
         return view('carInfo.index', ['carInfos' => $carInfos]);
     }
@@ -33,7 +40,36 @@ class CarInfoController extends Controller
     {
         $validated = $request->validated();
 
-        CarInfo::create($validated);
+        $carInfo = CarInfo::create($validated);
+
+        if($request->hasFile('images')) {
+            foreach($request->file('images') as $image) {
+                $filename = $image->store('images', 'public');
+                CarImage::create([
+                    'car_id' => $carInfo->id,
+                    'image' => $filename,
+                ]);
+            }
+        }
+
+        return redirect()->route('carInfo.index');
+    }
+
+    public function update(CarRequest $request, CarInfo $carInfo)
+    {
+        $validated = $request->validated();
+
+        if($request->hasFile('images')) {
+            foreach($request->file('images') as $image) {
+                $filename = $image->store('images', 'public');
+                CarImage::create([
+                    'car_id' => $carInfo->id,
+                    'image' => $filename,
+                ]);
+            }
+        }
+
+        $carInfo->update($validated);
 
         return redirect()->route('carInfo.index');
     }
@@ -57,17 +93,7 @@ class CarInfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CarRequest $request, CarInfo $carInfo)
-    {
-        // The incoming request is valid...
 
-        // Retrieve the validated input data...
-        $validated = $request->validated();
-
-        $carInfo->update($validated);
-
-        return redirect()->route('carInfo.index');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -77,5 +103,12 @@ class CarInfoController extends Controller
         $carInfo->delete();
 
         return redirect()->route('carInfo.index');
+    }
+
+    public function destroyImage(CarImage $carImage)
+    {
+        Storage::disk('public')->delete($carImage->image);
+        $carImage->delete();
+        return back();
     }
 }

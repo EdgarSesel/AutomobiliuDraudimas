@@ -46,6 +46,8 @@ class CarRequest extends FormRequest
             'model.required' => trans('messages.model.required'),
             'owner_id.required' => trans('messages.owner_id.required'),
             'owner_id.exists' => trans('messages.owner_id.exists')
+
+
         ];
     }
 }

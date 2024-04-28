@@ -10,9 +10,14 @@ class CarInfo extends Model
     use HasFactory;
 
     public function owner()
-{
-    return $this->belongsTo(Car::class);
-}
+    {
+        return $this->belongsTo(Car::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(CarImage::class, 'car_id');
+    }
 
 protected $fillable = [
     'reg_number',
