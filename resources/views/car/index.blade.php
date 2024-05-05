@@ -29,7 +29,7 @@
                                     <td>{{ $car->email}}</td>
                                     <td>
                                         @if (Auth::check() && Auth::user()->role === 'editor')
-                                            <button class="btn btn-primary">@lang('messages.edit')</button>
+                                            <a href="{{ route('car.edit', ['id' => $car->id]) }}" class="btn btn-primary">@lang('messages.edit')</a>
                                             <button class="btn btn-danger">@lang('messages.delete')</button>
                                         @endif
                                     </td>

@@ -28,16 +28,23 @@ class CarController extends Controller
         return redirect()->route('car.index');
     }
 
-    public function index(){
+    public function index()
+    {
+        $user = auth()->user();
 
-        return view('car.index',
-            [
-                'cars'=>Car::all()
-            ]);
+        if ($user->role === 'viewer') {
+            $cars = Car::where('user_id', $user->id)->get();
+        } else {
+            $cars = Car::all();
+        }
+
+        return view('car.index', ['cars' => $cars]);
     }
 
     public function edit($id){
+
         $car=Car::find($id);
+        $this->authorize('update', $car);
         return view('car.edit',
             [
                 'car'=>$car
@@ -46,6 +53,7 @@ class CarController extends Controller
 
     public function save(Request $request, $id){
         $car=Car::find($id);
+        $this->authorize('update', $car);
         $car->name = $request->name;
         $car->surname = $request->surname;
         $car->phone = $request->phone;

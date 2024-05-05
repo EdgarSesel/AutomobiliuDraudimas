@@ -57,6 +57,7 @@ class CarInfoController extends Controller
 
     public function update(CarRequest $request, CarInfo $carInfo)
     {
+        $this->authorize('update', $carInfo);
         $validated = $request->validated();
 
         if($request->hasFile('images')) {
@@ -87,6 +88,7 @@ class CarInfoController extends Controller
      */
     public function edit(CarInfo $carInfo)
     {
+        $this->authorize('update', $carInfo);
         return view('carInfo.edit', ['carInfo' => $carInfo]);
     }
 
