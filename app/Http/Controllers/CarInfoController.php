@@ -88,6 +88,7 @@ class CarInfoController extends Controller
      */
     public function edit(CarInfo $carInfo)
     {
+
         $this->authorize('update', $carInfo);
         return view('carInfo.edit', ['carInfo' => $carInfo]);
     }
